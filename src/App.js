@@ -1,31 +1,59 @@
-import React from 'react';
+import React, { Component } from "react";
 //コンポーネント化されたJSXファイルを読み込む 
 import Title from "./Title.js";　
-//import './App.css';
-import { catchClause } from '@babel/types';
+import AddTodo from "./AddTodo";　
+import './App.css';
+//import { catchClause } from '@babel/types';
 
-class App extends React.Component {
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tasks: [],
+      filterType: "all"
+    };
+  }
+
+  onTaskAdd(label) {
+    // タスクの一覧を取得
+    const tasks = this.state.tasks.concat();
+    // 配列の最後に新しいタスクを追加
+    tasks.push({
+      id: Date.now(),
+      label: label,
+      completed: false
+    });
+    // ステートに記録
+    this.setState({
+      tasks: tasks
+    });
+  }
+  onChangeItem(id) {
+    const tasks = this.state.tasks.map(item => {
+      if (item.id === id) {
+        item.completed = !item.completed;
+      }
+      return item;
+    });
+    this.setState({
+      tasks: tasks
+    });
+  }
+  onChangeFilterType(value) {
+    this.setState({
+      filterType: value
+    });
+  }
   render() {
+    // App.js
     return (
-      <Title />
+      <div>
+        <Title />
+        <AddTodo onAdd={label => this.onTaskAdd(label)} />
+
+      </div>
     );
   }
 }
-
-//メモ（↓あとで消す）
-// const App = () => {
-//  return(
-//    <div>
-//      <Cat />
-//      <Cat />
-//      <Cat />
-//      <Cat />
-//    </div>
-//   )
-//  }
-//  const Cat = () => {
-//    return<div>にゃ</div>
-//  }
-
 
 export default App;
