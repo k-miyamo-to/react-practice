@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 
-class Title extends
-React.Component {
+class Title extends Component {
     render(){
        return(
-           <h1>Todo App</h1>
+           <div className="Title">
+              <h1>Todo App</h1>
+           </div>
        );
     }
 }
