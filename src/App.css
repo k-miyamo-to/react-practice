@@ -6,3 +6,9 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: blueviolet;
 }
+.TaskList-list {
+  font-size: 1rem;
+}
+.TaskList-list-label {
+  color:red;
+}

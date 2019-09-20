@@ -1,6 +1,6 @@
-import React, {Component} from "react";
+import React from "react";
 
-class AddTodo extends Component {
+class AddTodo extends React.Component {
     constructor(){
         super()
         this.state = {

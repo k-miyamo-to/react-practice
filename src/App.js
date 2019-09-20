@@ -1,11 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
 //コンポーネント化されたJSXファイルを読み込む 
-import Title from "./Title.js";　
+import Title from "./Title";　
 import AddTodo from "./AddTodo";　
+import TaskList from "./TaskList";
+import Footer from "./Footer";
 import './App.css';
 //import { catchClause } from '@babel/types';
 
-class App extends Component {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -50,7 +52,15 @@ class App extends Component {
       <div>
         <Title />
         <AddTodo onAdd={label => this.onTaskAdd(label)} />
-
+        <TaskList 
+            tasks={this.state.tasks}
+            filterType={this.state.filterType}
+            onChangeItem={id => this.onChangeItem(id)}
+        />
+        <Footer 
+            filterType={this.state.filterType}
+            onChangeFilter={value => this.onChangeFilterType(value)}
+        />
       </div>
     );
   }
